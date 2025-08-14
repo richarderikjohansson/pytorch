@@ -1,1 +1,52 @@
-site_name: My Docs
+site_name: PyTorch course
+site_url: https://github.com/richarderikjohansson/pytorch
+
+nav:
+  - Home: index.md
+  - Chapters: 
+    - PyTorch Fundamentals: Chapters/00.md
+    - PyTorch Workflow Fundamentals: Chapters/01.md
+    - PyTorch Neural Network Classification: Chapters/02.md
+    - PyTorch Computer Vision: Chapters/03.md
+    - PyTorch Custom Datasets: Chapters/04.md
+    - PyTorch Going Modular: Chapters/05.md
+    - PyTorch Transfer Learning: Chapters/06.md
+    - PyTorch Experiment Tracking: Chapters/07.md
+    - PyTorch Paper Replicating: Chapters/08.md
+    - PyTorch Model Deployment: Chapters/09.md
+
+theme: 
+  name: material
+  features:
+    - navigation.instant
+    - navigation.top
+plugins:
+  - mkdocstrings:
+      handlers:
+          python:
+            options:
+              docstring_style: google 
+              docstring_section_style: table
+              show_docstring_functions: true
+              show_docstring_modules: true
+              show_docstring_description: false 
+  - search
+
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+markdown_extensions:
+  - mdx_math
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/richarderikjohansson/pytorch
+

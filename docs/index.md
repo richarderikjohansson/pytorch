@@ -1,17 +1,9 @@
-# Welcome to MkDocs
+# Documentation for PyTorch course
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Here will all documentation be stored for the YouTube course 
+relating to [PyTorch](https://pytorch.org/). The course is 
+hosted for free on YouTube and can be found [here](https://youtu.be/V_xro1bcAuA?si=YHbNDR-orgsaQglD). 
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+The course have 10 chapters in total, with exercises tied to each 
+chapter. GitHub repository, with the exercises can be found [here](https://github.com/mrdbourke/pytorch-deep-learning/tree/main)
+and documentation for the course can be found [here](https://www.learnpytorch.io/) 
