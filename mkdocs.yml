@@ -14,6 +14,9 @@ nav:
     - PyTorch Experiment Tracking: Chapters/07.md
     - PyTorch Paper Replicating: Chapters/08.md
     - PyTorch Model Deployment: Chapters/09.md
+  - Exercises:
+    - PyTorch Fundamentals: Exercises/00.md
+    - PyTorch Workflow Fundamentals: Exercises/01.md
 
 theme: 
   name: material
@@ -33,10 +36,9 @@ plugins:
   - search
 
 
-extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 markdown_extensions:
-  - mdx_math
+  - mdx_math:
+      enable_dollar_delimiter: true
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -44,6 +46,12 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+
+extra_javascript:
+  # 1) Configure MathJax BEFORE loading it
+  - javascripts/mathjax-config.js
+  # 2) Load MathJax v3
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
 
 extra:
   social:
