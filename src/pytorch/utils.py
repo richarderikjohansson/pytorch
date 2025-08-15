@@ -47,5 +47,13 @@ def save_model(model, name):
                f=savedir / name)
 
 
-def load_model(name):
-    pass
+def load_model(model, name):
+    modeldir = Path("models")
+    basedir = Path(__file__)
+    savedir = basedir.parent / modeldir
+    modelfile = savedir / name
+
+    if modelfile.exists():
+        model.load_state_dict(torch.load(modelfile))
+
+    return model
