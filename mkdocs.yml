@@ -17,6 +17,7 @@ nav:
   - Exercises:
     - PyTorch Fundamentals: Exercises/00.md
     - PyTorch Workflow Fundamentals: Exercises/01.md
+    - PyTorch Neural Network Classification: Exercises/02.md
   - Models: Models/models.md
 
 theme: 

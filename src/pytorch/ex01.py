@@ -2,7 +2,7 @@ import torch
 from torch import nn
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
-from pytorch.utils import find_assets, get_logger, save_model, load_model
+from pytorch.utils import find_assets, get_logger, save_model, load_model, set_cmap, RdYlBu
 from pytorch.models import LinearRegressionModel
 
 
@@ -19,9 +19,12 @@ class Chapter1:
         # initiate figure directory and logger object
         self.assetsdir = find_assets()
         self.logger = get_logger()
-        self.training_color = "cornflowerblue"
-        self.testing_color = "orange"
-        self.prediction_color = "tomato"
+        colors = RdYlBu()
+
+        self.red = colors[0]
+        self.blue = colors[-1]
+        self.orange = colors[3]
+        self.lightblue = colors[-3]
 
     def e1(self):
         """First exercise of Chapter 1
@@ -136,10 +139,11 @@ class Chapter1:
         self.logger.info("Training done")
         self.logger.info("Plotting loss\n")
         fig = plt.figure(figsize=(10, 7))
+
         gs = GridSpec(1, 1)
         ax = fig.add_subplot(gs[0, 0])
-        ax.plot(range(epochs), training_loss, color=self.training_color, label="Training loss")
-        ax.plot(range(epochs), testing_loss, color=self.testing_color, label="Testing loss")
+        ax.plot(range(epochs), training_loss, color=self.red, label="Training loss")
+        ax.plot(range(epochs), testing_loss, color=self.blue, label="Testing loss")
         ax.set_ylabel("Loss")
         ax.set_xlabel("Epochs")
         ax.legend()
@@ -199,8 +203,8 @@ class Chapter1:
         ax.set_title("Training, testing data with predictions from trained and loaded model")
 
         # plot training and testing data
-        ax.scatter(self.X_train, self.y_train, c="dimgray", s=4, label="Training Data")
-        ax.scatter(self.X_test, self.y_test, c="orange", s=4, label="Testing Data")
+        ax.scatter(self.X_train, self.y_train, c=self.red, s=4, label="Training Data")
+        ax.scatter(self.X_test, self.y_test, s=4, c=self.blue, label="Testing Data")
 
         # put models in evaluation mode
         self.model.eval()
@@ -213,8 +217,9 @@ class Chapter1:
 
         # plot predictions
         self.logger.info("Plotting")
-        ax.scatter(self.X_test, preds, c="tomato", s=4, label="Predictions")
-        ax.plot(self.X_test, preds, label="Predictions from loaded model", linestyle="-.")
+        ax.scatter(self.X_test, preds, c=self.orange, s=4, label="Predictions")
+        ax.plot(self.X_test, preds_loaded, c=self.lightblue, label="Predictions from loaded model", linestyle="-.")
+        ax.grid(linestyle="dashed", alpha=0.3)
         ax.legend()
 
         # save figure and close figure
@@ -235,16 +240,17 @@ def plot_predictions(obj,
     fig = plt.figure(figsize=(10, 7))
     ax = fig.add_subplot(gs[0, 0])
     ax.set_title("Traning and testing data")
-    ax.scatter(train_data, train_labels, c=obj.training_color, s=4, label="Training Data")
-    ax.scatter(test_data, test_labels, c=obj.testing_color,  s=4, label="Test Data")
+    ax.scatter(train_data, train_labels, c=obj.red, s=4, label="Training Data")
+    ax.scatter(test_data, test_labels, c=obj.blue,  s=4, label="Test Data")
 
     if predictions is not None:
         ax.scatter(test_data,
                    predictions,
-                   c=obj.prediction_color,
                    s=4,
+                   c=obj.lightblue,
                    label="Predictions")
 
+    ax.grid(linestyle="dashed", alpha=0.2)
     ax.legend()
     fig.savefig(figname, transparent=False)
     plt.close()
